@@ -12,10 +12,11 @@ app.listen(PORT, HOST, () => {
   console.log(`Сервер запущен http://${HOST}:${PORT}`);
 });
 
-app.use((req, res) => {
-	res.status(404).send('Данная страница не найдена!');
-});
-
-app.use((err, req, res) => {
-	res.status(500).send('Ошибка сервера')
+app.use(function(err, req, res, next) {
+	if(err.statusCode)
+	{
+		res.status(err.statusCode).json(err.message);
+	}else{
+		res.status(400).json("Отправьте запрос корректно!");
+	}
 });
