@@ -46,8 +46,4 @@ router.post("/comments", jsonParser, validation, (req, res) => {
 	com += JSON.stringify(req.body);
 	res.send('Спасибо, за вашу отзывчивость!');
 });
-
-router.use((req, res, next) =>{
-  res.status(404).send('Такой страницы не существует!');
-});
 module.exports = router;
