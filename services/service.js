@@ -29,7 +29,9 @@ async function findbyidUser(req, res) {
 	const id = req.params.id;
 	User.findById(id)
 		.then((result) => {
-			res.status(200).json(result);
+			if(result){
+				res.status(200).json(result);
+			}else res.status(400).json("Такого документа не существует");
 		})
 		.catch((err) => {
 			res.status(404).json("Такого документа не существует!");
