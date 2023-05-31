@@ -14,7 +14,7 @@ async function insertUser(req, res) {
 				res.status(201).json(`Данные успешно отправлены!`);
 			})
 			.catch((err) => handleError(res, err));
-	}else res.status(400).json("Данные должны быть в формате json");
+	} else res.status(400).json("Данные должны быть в формате json");
 }
 
 async function showUser(req, res) {
@@ -29,9 +29,9 @@ async function findbyidUser(req, res) {
 	const id = req.params.id;
 	User.findById(id)
 		.then((result) => {
-			if(result){
+			if (result) {
 				res.status(200).json(result);
-			}else res.status(400).json("Такого документа не существует");
+			} else res.status(400).json("Такого документа не существует");
 		})
 		.catch((err) => {
 			res.status(404).json("Такого документа не существует!");
